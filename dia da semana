@@ -4,3 +4,13 @@ if (dia_semana == 'segunda' || dia_semana == 'terça' || dia_semana == 'quarta' 
     alert('Boa semana');
 } else if (dia_semana == 'sabado' || dia_semana == 'domingo') {
     alert('Bom final de semana');
+// Proximo desafio:
+criar uma logica onde o numero positivo e o negativo devem ser diferente
+
+let numero = prompt ('escolha um numero');
+
+if (numero >= 0){
+    alert ('seu numero é positivo')
+} else {
+    alert ('vai tomar no cu macaco burro e imundo');
+}
