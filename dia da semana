@@ -1,3 +1,5 @@
+Desafio dia da semana
+
 let dia_semana = prompt('Escreva qual é o dia da semana:').toLowerCase();
 
 if (dia_semana == 'segunda' || dia_semana == 'terça' || dia_semana == 'quarta' || dia_semana == 'quinta' || dia_semana == 'sexta') {
