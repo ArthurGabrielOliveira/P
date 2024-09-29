@@ -16,3 +16,13 @@ if (numero >= 0){
 } else {
     alert ('vai tomar no cu macaco burro e imundo');
 }
+
+
+let Pontuaçao = prompt ('qual foi sua pontuação?');
+
+if (Pontuaçao >= 100){
+    alert ('voce ganhou');
+} else {
+    alert ('pavarin da o cu')
+}
+
