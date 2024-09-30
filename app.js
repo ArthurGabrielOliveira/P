@@ -27,4 +27,15 @@ alert(`voce acertou o numero secreto ${numeroSecreto} com ${tentativas} ${palavr
   //      alert(`voce acertou o numero secreto ${numeroSecreto} com ${tentativas} tentativas`);
     //} else {
       //  alert(`voce acertou o numero secreto ${numeroSecreto} com ${tentativas} tentativa`);
-    // } 
+    // } 1
+
+
+
+
+
+
+
+
+
+
+043190222054
