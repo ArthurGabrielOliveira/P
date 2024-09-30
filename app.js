@@ -39,3 +39,7 @@ alert(`voce acertou o numero secreto ${numeroSecreto} com ${tentativas} ${palavr
 
 
 043190222054
+
+
+
+043190222040
