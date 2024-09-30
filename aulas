@@ -1,0 +1,165 @@
+Quando estávamos interagindo com o jogo de forma mais manual, usando um pequeno pedaço de papel, você conseguiu fazer várias tentativas até acertar. No entanto, atualmente, estamos limitados a uma única tentativa em nosso computador. É essencial abordar essa questão.
+
+Guilherme: Na programação, existe uma maneira de indicar: "Execute essas instruções apenas enquanto uma determinada condição permanecer verdadeira". Esse conceito é conhecido como loop ou, em inglês, while. A estrutura do while é bastante similar à do if.
+
+Para empregar o while, escrevemos a palavra seguida por parênteses e chaves para delinear as condições. Dentro do "enquanto", o que ocorre?
+
+Arquivo app.js no repositório do GitHub
+
+app.js
+
+// código omitido
+
+// enquanto
+while (condição) {
+    // instruções a serem executadas
+}
+
+// código omitido
+Copiar código
+Mônica: Aconselhamos a fazer uma anotação do que significa cada uma desses comandos em JavaScript, que também se aplica a outras linguagens de programação. Isso será útil quando precisar procurar como fazer essas coisas, lembrando do que estamos falando.
+
+Guilherme: No nosso jogo, como regra, queremos que as tentativas continuem apenas enquanto o chute não for igual ao número secreto. Caso contrário, se acertar, o jogo termina.
+
+app.js
+
+// código omitido
+
+// enquanto chute não for igual ao n.s.
+while () {
+    
+}
+
+// código omitido
+Copiar código
+Então, como vamos aplicar isso na lógica da nossa aplicação?
+
+Vamos pedir um chute para a pessoa jogadora quando estivermos dentro da condição do while ou ainda não entramos?
+
+Mônica: Já entramos, porque queremos iniciar o jogo, fazer a pergunta, a pessoa dá o chute, fazemos a pergunta de novo.
+
+Guilherme: Então, dentro da variável let chute, vamos remover a parte do prompt('Escolha um número entre 1 e 10'), deixando a variável let chute; vazia, indicando um espaço na memória onde armazenaremos o chute, que ainda não foi preenchido.
+
+Dentro do while(){} passamos que o valor do chute será o valor que pedimos na condição.
+
+app.js
+
+// código omitido
+
+// enquanto chute não for igual ao n.s.
+while () {
+   chute = prompt('Escolha um número entre 1 e 100');
+}
+
+// código omitido
+Copiar código
+Agora, necessitamos verificar a validade da condição. Como determinamos se a executamos ou não? Até quando repetimos? Vamos escrever essa parte agora no código.
+
+Vamos compor com base nas informações anteriores. O termo "enquanto" equivale ao while. A menção ao chute diz respeito ao chute que foi mencionado anteriormente dentro do while().
+
+O "Não for igual" tem um código específico em JavaScript que podemos usar para representar essa expressão. Portanto, para representar "não é igual", usamos != em JavaScript.
+
+Portanto, enquanto o chute não for igual ao número secreto, manteremos essa repetição. Por exemplo, pergunte e o chute, pergunte e o chute.
+
+app.js
+
+// código omitido
+
+// enquanto chute não for igual ao n.s.
+while (chute != numeroSecreto) {
+   chute = prompt('Escolha um número entre 1 e 100');
+}
+
+// código omitido
+Copiar código
+Agora, se eu executar isso agora (não execute o programa assim!), recebemos um loop infinito de solicitações de chutes.
+
+Ele pergunta, o chute, o chute, o chute, e assim por diante, infinitamente. Passaríamos o resto da nossa vida dizendo qual é o valor do palpite e nada mais aconteceria.
+
+Mônica: Por causa da execução de códigos sequenciais, quando ele chega à linha o while, repete indefinidamente porque a condição nunca é atendida, então ele nunca avança para o próximo número.
+
+Guilherme: Para corrigir isso, precisamos pegar as condições if que estão fora do while e movê-las para dentro do nosso laço while.
+
+Mônica: Portanto, vamos copiar da linha 10 à linha 19. Com "CTRL + X" e depois da linha 8, damos um enter e na linha 9 colamos tudo que copiamos.
+
+Por enquanto, temos:
+
+app.js
+
+// código omitido
+
+alert('Boas vindas ao jogo do número secreto');
+let numeroSecreto = 5;
+console.log(numeroSecreto)
+let chute
+
+// enquanto chute não for igual ao n.s.
+while (chute != numeroSecreto) {
+    chute = prompt('Escolha um número entre 1 e 10');
+    // se chute for igual ao número secreto
+if (chute == numeroSecreto) { 
+        alert(`Isso ai! Você descobriu o número secreto ${numeroSecreto}`);
+} else {
+    if (chute > numeroSecreto) {
+            alert(`O número secreto é menor que ${chute}`);
+} else {
+        alert(`0 número secreto é maior que ${chute}`)
+}
+
+// código omitido
+Copiar código
+Guilherme: Isso leva a um ponto importante.
+
+Vamos analisar o código. Notem que sempre que começamos uma nova instrução, iniciamos no início da linha à esquerda, está bem alinhado à esquerda. No âmbito do while, onde normalmente usamos chaves {} para delimitar esse escopo, há um recuo à esquerda.
+
+Essa prática é recomendada para garantir a legibilidade do código. No entanto, ao copiar ("Ctrl+C") e colar ("Ctrl+V") dentro do if(), os códigos não foram inseridos dentro do escopo apropriado, seja do while ou do if. Consequentemente, eles ficaram nesse formato. Isso não é apropriado.
+
+Selecionamos da linha 10 até a linha 18 (começo do if() até o else()). Pressionamos "Shift" e o caractere "{" ("Shift + {"), o caractere "{" foi inserido corretamente.
+
+app.js
+
+// código omitido
+
+// enquanto chute não for igual ao n.s.
+while (chute != numeroSecreto) {
+    chute = prompt('Escolha um número entre 1 e 100');
+    // se chute for igual ao número secreto
+    if (chute == numeroSecreto) {
+        alert(`Isso ai! Você descobriu o número secreto ${numeroSecreto}`);
+    } else {
+        if (chute > numeroSecreto) {
+            alert(`O número secreto é menor que ${chute}`);
+        } else {
+            alert(`O número secreto é maior que ${chute}`);
+        }
+
+// código omitido
+Copiar código
+Note que adicionamos um espaço entre cada uma dessas instruções. Por que isso torna a compreensão mais simples? Pois compreendemos que todo esse código está inserido no while.
+
+Agora vamos analisar se a lógica é coerente. No while(), o chute é idêntico ao número secreto na primeira tentativa? Não, ele começa com um valor vazio (let chute). No entanto, o número secreto está definido.
+
+Quando ingressamos no while pela primeira vez, a seguinte instrução ocorrerá: solicitaremos um valor de 1 a 10 para o chute. Após inserirmos o valor, a primeira verificação acontecerá. O chute é igual ao número secreto após essa verificação? Se for o caso, um alerta será exibido. Caso contrário, receberemos informações sobre se o chute é menor ou maior.
+
+Vamos testar isso e observar o resultado?
+
+Mônica: Gostaria de comentar algo sobre os operadores de comparação que estamos usando, como: o sinal de diferença !=, o de igualdade == e o de maior >. São operações que vemos na escola, quando comparamos números em problemas matemáticos. Só que aqui, em vez de comparar o número em si, comparamos variáveis.
+
+Também podemos comparar números, se quisermos. Vamos jogar?
+
+Guilherme: Vamos ao jogo no navegador.
+
+Sabemos que o número secreto é 5. Obrigado, console, por nos mostrar o resultado final do jogo, que não faz nenhum sentido agora, mas depois removeremos essa visualização.
+
+Mônica: Por enquanto, estamos apenas desenvolvendo o resultado final.
+
+Guilherme: No desenvolvimento, inserimos o resultado esperado, um fluxo otimista, e depois retiramos essas informações.
+
+Vamos começar com um número inferior ao número secreto, por exemplo 8. A mensagem "O número secreto é menor que 8" será exibida. Faremos um processo passo a passo. Se digitarmos 7, a mensagem "O número secreto é menor que 7" será exibida, e assim por diante... Até chegarmos no número secreto 5 e a mensagem "Você acertou o número secreto" será exibida.
+
+Clicamos em "Ok".
+
+Depois disso, testaremos o caminho oposto. Queremos digitar um número menor do que o número secreto. Então, se digitarmos 1, a mensagem "O número secreto é maior que 1" será exibida. E assim seguimos, até digitarmos o número 5 e "Você acertou o número secreto" será exibido novamente, pois o número secreto é 5.
+
+Conclusão
+Guilherme: Isso significa que nosso jogo está funcionando de acordo com o esperado. Ele é muito inspirado no que fizemos no início do curso.
